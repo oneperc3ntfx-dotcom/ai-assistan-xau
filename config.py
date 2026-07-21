@@ -1,5 +1,19 @@
-BOT_TOKEN = "TOKEN_WELCOME_BOT"
+BOT_TOKEN = "8280168009:AAGY8UacyFSOU1tgA2mkoqFCZZm91-dJCV0"
 
-ADMIN_ID = 123456789
+ADMIN_ID = 1305881282
 
-SIGNAL_BOT = "https://t.me/NAMA_SIGNAL_BOT"
+
+# Grup tempat admin verifikasi pembayaran
+
+PAYMENT_GROUP_ID = -1003934607716
+
+# Link Bot Signal
+
+SIGNAL_BOT = "https://t.me/@AIGOLDASSISTANT_BOT"
+
+
+# Apps Script Web App URL
+
+APPSCRIPT_URL = (
+    "https://script.google.com/macros/s/AKfycby0TUP-6-rmEIzFCWavQ2NQZyZjIoS0rUmduOTH0CDA_39dAs-uKuOVzk5J-xZDH-oH/exec"
+)
