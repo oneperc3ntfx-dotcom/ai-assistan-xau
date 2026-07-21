@@ -37,7 +37,10 @@ dp = Dispatcher()
 
 
 
-# penyimpanan sementara
+# ==========================
+# TEMP STORAGE
+# ==========================
+
 user_packages = {}
 
 user_proofs = {}
@@ -59,13 +62,10 @@ async def start(message: Message):
 
             [
 
-            InlineKeyboardButton(
-
-                text="🤖 AKTIFKAN AI ASSISTANT",
-
-                callback_data="activate"
-
-            )
+                InlineKeyboardButton(
+                    text="🤖 AKTIFKAN AI ASSISTANT",
+                    callback_data="activate"
+                )
 
             ]
 
@@ -79,68 +79,74 @@ async def start(message: Message):
     )
 
 
-
     text = f"""
 
-<b>🤖 XAU AI ASSISTANT PREMIUM</b>
+🤖 <b>XAU AI ASSISTANT PREMIUM</b>
 
 
-Halo <b>{message.from_user.first_name}</b> 👋
+👋 Halo <b>{message.from_user.first_name}</b>
 
 
 Selamat datang di layanan
 <b>XAU AI Assistant Premium</b>.
 
 
+<blockquote>
+"Partner AI pribadi untuk membantu Anda
+membaca market Gold lebih cepat,
+lebih terstruktur, dan tanpa noise."
+</blockquote>
+
+
 ━━━━━━━━━━━━━━━━━━
 
 
-<b>🚀 Apa yang Anda dapatkan?</b>
+🚀 <b>FITUR PREMIUM</b>
 
 
 📈 <b>Analisa XAUUSD Premium</b>
 
 🧠 <b>Smart Money Concept Analysis</b>
 
-📰 <b>Market News Berdampak Tinggi</b>
+⚡ <b>Update Market Gold Terbaru</b>
 
-⚡ <b>Update Pergerakan Gold Terbaru</b>
-
-🤖 <b>AI Assistant Pribadi Telegram</b>
+🤖 <b>AI Assistant Telegram Pribadi</b>
 
 
 ━━━━━━━━━━━━━━━━━━
 
 
-<b>Kenapa berbeda dari grup signal biasa?</b>
+💎 <b>KENAPA BERBEDA?</b>
 
 
 Anda tidak perlu lagi:
 
-❌ Membaca chat yang menumpuk
 
-❌ Mencari pesan penting
+❌ Membaca ratusan chat signal
 
-❌ Takut melewatkan momentum market
+❌ Mencari informasi penting
+
+❌ Takut kehilangan momentum
+
+❌ Pamer Profit yang membuat ada FOMO
 
 
-Semua informasi penting akan dikirim
-langsung melalui <b>AI Assistant pribadi Anda</b>.
+Semua informasi akan dirangkum
+langsung oleh AI Assistant Anda.
 
 
 ━━━━━━━━━━━━━━━━━━
 
 
-<b>Aktifkan akses Anda sekarang</b>
+🔐 <b>AKTIFKAN AKSES SEKARANG</b>
 
 
-Dapatkan bantuan AI untuk membantu
-menganalisa market Gold secara lebih cepat
-dan terstruktur.
+Dapatkan akses premium untuk membantu
+analisa Gold secara lebih cepat
+dan profesional.
 
 
-Klik tombol di bawah untuk memulai
-proses aktivasi membership.
+Klik tombol di bawah untuk memulai.
 
 
 """
@@ -159,18 +165,28 @@ proses aktivasi membership.
     )
 
 
+
+
 # ==========================
 # PILIH PACKAGE
 # ==========================
 
 
 @dp.callback_query(
-    F.data=="activate"
+    F.data == "activate"
 )
 
 async def choose_package(
     callback: CallbackQuery
 ):
+
+
+    # hapus tombol lama
+
+    await callback.message.edit_reply_markup(
+        reply_markup=None
+    )
+
 
 
     keyboard = InlineKeyboardMarkup(
@@ -180,52 +196,40 @@ async def choose_package(
 
             [
 
-            InlineKeyboardButton(
-
-                text="🥇 1 Bulan • Rp250.000",
-
-                callback_data="pkg_1month"
-
-            )
+                InlineKeyboardButton(
+                    text="🥇 STARTER • 1 Bulan | Rp250.000",
+                    callback_data="pkg_1month"
+                )
 
             ],
 
 
             [
 
-            InlineKeyboardButton(
-
-                text="🥈 6 Bulan • Rp500.000",
-
-                callback_data="pkg_6month"
-
-            )
+                InlineKeyboardButton(
+                    text="🥈 PRO • 6 Bulan | Rp500.000",
+                    callback_data="pkg_6month"
+                )
 
             ],
 
 
             [
 
-            InlineKeyboardButton(
-
-                text="🥉 12 Bulan • Rp850.000",
-
-                callback_data="pkg_12month"
-
-            )
+                InlineKeyboardButton(
+                    text="🥉 ELITE • 12 Bulan | Rp850.000",
+                    callback_data="pkg_12month"
+                )
 
             ],
 
 
             [
 
-            InlineKeyboardButton(
-
-                text="👑 Permanent • Rp1.500.000",
-
-                callback_data="pkg_permanent"
-
-            )
+                InlineKeyboardButton(
+                    text="👑 LIFETIME ACCESS | Rp1.500.000",
+                    callback_data="pkg_permanent"
+                )
 
             ]
 
@@ -234,38 +238,54 @@ async def choose_package(
     )
 
 
-    await callback.message.answer(
 
-"""
+    text = """
 
-<b>💎 PILIH MEMBERSHIP
-XAU AI ASSISTANT</b>
+💎 <b>PILIH MEMBERSHIP PLAN</b>
 
 
-Pilih paket akses sesuai kebutuhan
-Anda untuk mendapatkan layanan
-AI Assistant Premium.
+<blockquote>
+"Pilih paket akses yang sesuai kebutuhan
+trading Anda."
+</blockquote>
 
 
 ━━━━━━━━━━━━━━━━━━
 
 
-🥇 <b>1 Bulan</b>
+🥇 <b>STARTER PLAN</b>
+
+📅 1 Bulan
 
 💰 Rp250.000
 
 
-🥈 <b>6 Bulan</b>
+━━━━━━━━━━━━━━━━━━
+
+
+🥈 <b>PRO PLAN</b>
+
+📅 6 Bulan
 
 💰 Rp500.000
 
 
-🥉 <b>12 Bulan</b>
+━━━━━━━━━━━━━━━━━━
+
+
+🥉 <b>ELITE PLAN</b>
+
+📅 12 Bulan
 
 💰 Rp850.000
 
 
-👑 <b>Permanent Access</b>
+━━━━━━━━━━━━━━━━━━
+
+
+👑 <b>LIFETIME ACCESS</b>
+
+♾️ Permanent
 
 💰 Rp1.500.000
 
@@ -273,15 +293,24 @@ AI Assistant Premium.
 ━━━━━━━━━━━━━━━━━━
 
 
-✨ Semua paket mendapatkan akses
-AI Assistant Telegram pribadi.
+✨ Semua paket mendapatkan:
+
+✅ AI Assistant Telegram
+
+✅ Analisa XAUUSD
+
+✅ Smart Money Analysis
 
 
-Silakan pilih paket untuk melanjutkan
-proses aktivasi.
+Silakan pilih paket untuk melanjutkan.
 
 
-""",
+"""
+
+
+    await callback.message.answer(
+
+        text,
 
         reply_markup=keyboard,
 
@@ -290,7 +319,10 @@ proses aktivasi.
     )
 
 
-    await callback.answer()
+    await callback.answer(
+        "Silakan pilih paket membership"
+    )
+
 
 
 
@@ -298,7 +330,7 @@ proses aktivasi.
 
 
 # ==========================
-# QRIS
+# QRIS PAYMENT
 # ==========================
 
 
@@ -309,6 +341,13 @@ proses aktivasi.
 async def show_payment(
     callback: CallbackQuery
 ):
+
+
+    # hapus tombol paket
+
+    await callback.message.edit_reply_markup(
+        reply_markup=None
+    )
 
 
     package_key = callback.data.replace(
@@ -327,25 +366,26 @@ async def show_payment(
 
 
 
-    await callback.message.answer_photo(
+    payment_text = f"""
 
-        photo=FSInputFile(
-            "assets/qris.jpg"
-        ),
+💳 <b>AKTIVASI MEMBERSHIP</b>
 
 
-        caption=f"""
+<blockquote>
+"Selangkah lagi menuju akses
+AI Assistant Premium Anda."
+</blockquote>
 
-<b>💳 AKTIVASI MEMBERSHIP
-XAU AI ASSISTANT</b>
+
+━━━━━━━━━━━━━━━━━━
 
 
-📦 <b>Paket Dipilih:</b>
+📦 <b>Paket Dipilih</b>
 
 {data['label']}
 
 
-💰 <b>Total Pembayaran:</b>
+💰 <b>Total Pembayaran</b>
 
 Rp {data['price']:,}
 
@@ -353,52 +393,62 @@ Rp {data['price']:,}
 ━━━━━━━━━━━━━━━━━━
 
 
-Silakan lakukan pembayaran
-melalui QRIS di atas.
+📌 <b>Instruksi Pembayaran</b>
 
 
-Setelah pembayaran selesai:
+1️⃣ Scan QRIS di atas
+
+2️⃣ Lakukan pembayaran
+
+3️⃣ Kirim bukti pembayaran
 
 
-📸 Kirim screenshot atau foto
-<b>bukti pembayaran</b> ke chat ini.
-
-
-Admin akan melakukan pengecekan
-dan mengaktifkan akses Anda.
+📸 Screenshot bukti pembayaran
+ke chat ini.
 
 
 ━━━━━━━━━━━━━━━━━━
 
 
-Terima kasih telah mempercayakan
-akses market intelligence Anda
+⏳ Admin akan melakukan verifikasi
+dan mengaktifkan akses Anda.
+
+
+Terima kasih telah bergabung
 bersama <b>XAU AI Assistant</b>.
 
 
-""",
+"""
+
+
+    await callback.message.answer_photo(
+
+        photo=FSInputFile(
+            "assets/qris.jpg"
+        ),
+
+        caption=payment_text,
 
         parse_mode="HTML"
 
     )
 
 
-
-
-
-
+    await callback.answer(
+        "Paket berhasil dipilih"
+    )
 
 # ==========================
-# MINTA UPLOAD
+# MINTA UPLOAD BUKTI
 # ==========================
 
 
 @dp.callback_query(
-    F.data=="upload"
+    F.data == "upload"
 )
 
 async def upload_request(
-    callback:CallbackQuery
+    callback: CallbackQuery
 ):
 
 
@@ -406,24 +456,46 @@ async def upload_request(
 
 """
 
-<b>📸 UPLOAD BUKTI PEMBAYARAN</b>
+📸 <b>UPLOAD BUKTI PEMBAYARAN</b>
 
 
-Silakan kirim screenshot atau foto
-bukti pembayaran QRIS Anda.
+<blockquote>
+"Pastikan bukti pembayaran terlihat jelas
+agar proses aktivasi dapat berjalan cepat."
+</blockquote>
 
 
-Pastikan gambar terlihat jelas agar
-proses verifikasi dapat dilakukan
-dengan cepat.
+━━━━━━━━━━━━━━━━━━
+
+
+Silakan kirim:
+
+
+✅ Screenshot pembayaran
+
+atau
+
+✅ Foto bukti transfer QRIS
+
+
+Admin akan melakukan pengecekan
+setelah bukti diterima.
 
 
 """
 
+
+        ,
+
+        parse_mode="HTML"
+
     )
 
 
-    await callback.answer()
+    await callback.answer(
+        "Silakan upload bukti pembayaran ke sini"
+    )
+
 
 
 
@@ -431,7 +503,7 @@ dengan cepat.
 
 
 # ==========================
-# TERIMA BUKTI
+# TERIMA BUKTI PEMBAYARAN
 # ==========================
 
 
@@ -456,13 +528,13 @@ async def receive_payment(
 
             [
 
-            InlineKeyboardButton(
+                InlineKeyboardButton(
 
-                text="✅ KIRIM VERIFIKASI",
+                    text="✅ KIRIM KE ADMIN",
 
-                callback_data="verify"
+                    callback_data="verify"
 
-            )
+                )
 
             ]
 
@@ -476,19 +548,25 @@ async def receive_payment(
 
 """
 
-<b>✅ BUKTI PEMBAYARAN DITERIMA</b>
+✅ <b>BUKTI PEMBAYARAN DITERIMA</b>
 
 
-Bukti pembayaran berhasil diterima.
+<blockquote>
+"Data pembayaran Anda sudah siap
+untuk dikirim ke Admin."
+</blockquote>
 
 
-Silakan klik tombol di bawah untuk
-mengirim permintaan verifikasi
-kepada Admin.
+━━━━━━━━━━━━━━━━━━
 
 
-⏳ Proses pengecekan dilakukan
-setelah Admin menerima laporan.
+Status:
+
+🟡 Menunggu verifikasi Admin
+
+
+Klik tombol berikut untuk mengirim
+permintaan pengecekan.
 
 
 """,
@@ -500,21 +578,27 @@ setelah Admin menerima laporan.
     )
 
 
+
+
+
+
+
 # ==========================
-# KIRIM ADMIN
+# KIRIM VERIFIKASI ADMIN
 # ==========================
 
 
 @dp.callback_query(
-    F.data=="verify"
+    F.data == "verify"
 )
 
 async def verify(
-    callback:CallbackQuery
+    callback: CallbackQuery
 ):
 
 
     user_id = callback.from_user.id
+
 
 
     package_key = user_packages.get(
@@ -527,14 +611,29 @@ async def verify(
     )
 
 
+
     if not package_key or not proof:
 
+
         await callback.answer(
-            "Data belum lengkap",
+
+            "⚠️ Data belum lengkap",
+
             show_alert=True
+
         )
 
         return
+
+
+
+
+
+    # hapus tombol user
+
+    await callback.message.edit_reply_markup(
+        reply_markup=None
+    )
 
 
 
@@ -542,28 +641,29 @@ async def verify(
 
 
 
-    keyboard = InlineKeyboardMarkup(
+
+    admin_keyboard = InlineKeyboardMarkup(
 
         inline_keyboard=[
 
             [
 
-            InlineKeyboardButton(
+                InlineKeyboardButton(
 
-                text="✅ APPROVE",
+                    text="✅ APPROVE",
 
-                callback_data=f"approve_{user_id}"
+                    callback_data=f"approve_{user_id}"
 
-            ),
+                ),
 
 
-            InlineKeyboardButton(
+                InlineKeyboardButton(
 
-                text="❌ REJECT",
+                    text="❌ REJECT",
 
-                callback_data=f"reject_{user_id}"
+                    callback_data=f"reject_{user_id}"
 
-            )
+                )
 
             ]
 
@@ -573,41 +673,58 @@ async def verify(
 
 
 
-    await bot.send_photo(
 
-        chat_id=PAYMENT_GROUP_ID,
+    username = (
 
-        photo=proof,
+        f"@{callback.from_user.username}"
 
-        caption=f"""
+        if callback.from_user.username
 
-<b>📥 PAYMENT VERIFICATION</b>
+        else "-"
+
+    )
+
+
+
+
+    admin_text = f"""
+
+📥 <b>PAYMENT VERIFICATION</b>
+
+
+<blockquote>
+"Member baru menunggu pengecekan
+aktivasi membership."
+</blockquote>
 
 
 ━━━━━━━━━━━━━━━━━━
 
 
-👤 <b>Nama:</b>
+👤 <b>Nama</b>
 
 {callback.from_user.full_name}
 
 
-🔹 <b>Username:</b>
+🔹 <b>Username</b>
 
-@{callback.from_user.username}
+{username}
 
 
-🆔 <b>Telegram ID:</b>
+🆔 <b>Telegram ID</b>
 
 <code>{user_id}</code>
 
 
-📦 <b>Paket:</b>
+━━━━━━━━━━━━━━━━━━
+
+
+📦 <b>Paket</b>
 
 {data['label']}
 
 
-💰 <b>Total:</b>
+💰 <b>Total</b>
 
 Rp {data['price']:,}
 
@@ -615,13 +732,22 @@ Rp {data['price']:,}
 ━━━━━━━━━━━━━━━━━━
 
 
-Silakan lakukan pengecekan
-dan pilih tindakan.
+⚡ Silakan lakukan verifikasi.
 
 
-""",
+"""
 
-        reply_markup=keyboard,
+
+
+    await bot.send_photo(
+
+        chat_id=PAYMENT_GROUP_ID,
+
+        photo=proof,
+
+        caption=admin_text,
+
+        reply_markup=admin_keyboard,
 
         parse_mode="HTML"
 
@@ -629,37 +755,46 @@ dan pilih tindakan.
 
 
 
+
+
     await callback.message.answer(
 
-        """
-
-<b>⏳ PEMBAYARAN DALAM PROSES VERIFIKASI</b>
-
-
-Bukti pembayaran telah dikirim
-kepada Admin.
-
-
-Mohon tunggu proses pengecekan.
-
-
-Terima kasih atas kesabaran Anda.
-
-
 """
+
+⏳ <b>VERIFIKASI BERHASIL DIKIRIM</b>
+
+
+<blockquote>
+"Admin sedang melakukan pengecekan
+pembayaran Anda."
+</blockquote>
+
+
+━━━━━━━━━━━━━━━━━━
+
+
+Status:
+
+🟡 Menunggu approval
+
+
+Anda akan menerima notifikasi
+setelah membership aktif maks 12 jam).
+
+
+""",
+
+        parse_mode="HTML"
 
     )
 
 
-    await callback.answer()
-
-
-
-
-
+    await callback.answer(
+        "Dikirim ke Admin"
+    )
 
 # ==========================
-# APPROVE
+# APPROVE MEMBER
 # ==========================
 
 
@@ -668,8 +803,16 @@ Terima kasih atas kesabaran Anda.
 )
 
 async def approve(
-    callback:CallbackQuery
+    callback: CallbackQuery
 ):
+
+
+    # hapus tombol admin
+
+    await callback.message.edit_reply_markup(
+        reply_markup=None
+    )
+
 
 
     user_id = int(
@@ -684,19 +827,41 @@ async def approve(
 
 
 
-    package_key = user_packages[user_id]
+    package_key = user_packages.get(
+        user_id
+    )
+
+
+
+    if not package_key:
+
+
+        await callback.answer(
+
+            "Data paket tidak ditemukan",
+
+            show_alert=True
+
+        )
+
+        return
+
+
 
 
     data = PACKAGE_MAP[package_key]
 
 
 
+
     if data["days"] == 9999:
 
-        expired = "PERMANENT"
+
+        expired = "PERMANENT ACCESS"
 
 
     else:
+
 
         expired = (
 
@@ -708,30 +873,39 @@ async def approve(
                 days=data["days"]
             )
 
-        ).strftime("%d-%m-%Y")
+        ).strftime(
+            "%d-%m-%Y"
+        )
+
+
 
 
 
     save_member({
 
-        "telegram_id":user_id,
+        "telegram_id": user_id,
 
-        "username":user.username or "",
+        "username": user.username or "",
 
-        "nama":user.full_name,
+        "nama": user.full_name,
 
-        "paket":data["label"],
+        "paket": data["label"],
 
-        "harga":data["price"],
+        "harga": data["price"],
 
         "register":
-        datetime.now().strftime("%d-%m-%Y"),
 
-        "expired":expired,
+        datetime.now().strftime(
+            "%d-%m-%Y"
+        ),
 
-        "status":"ACTIVE"
+        "expired": expired,
+
+        "status": "ACTIVE"
 
     })
+
+
 
 
 
@@ -741,13 +915,13 @@ async def approve(
 
             [
 
-            InlineKeyboardButton(
+                InlineKeyboardButton(
 
-                text="🤖 BUKA AI ASSISTANT",
+                    text="🤖 MASUK AI ASSISTANT",
 
-                url=SIGNAL_BOT
+                    url=SIGNAL_BOT
 
-            )
+                )
 
             ]
 
@@ -757,29 +931,28 @@ async def approve(
 
 
 
-    await bot.send_message(
-
-        user_id,
 
 
-f"""
+    member_text = f"""
 
-<b>🎉 MEMBERSHIP AKTIF</b>
+🎉 <b>MEMBERSHIP AKTIF</b>
 
 
-Selamat! Pembayaran Anda telah
-berhasil diverifikasi.
+<blockquote>
+"Selamat! Anda sekarang resmi menjadi
+bagian dari XAU AI Assistant Premium."
+</blockquote>
 
 
 ━━━━━━━━━━━━━━━━━━
 
 
-📦 <b>Paket:</b>
+📦 <b>Paket Anda</b>
 
 {data['label']}
 
 
-⏳ <b>Masa Aktif:</b>
+⏳ <b>Masa Aktif</b>
 
 {expired}
 
@@ -787,18 +960,40 @@ berhasil diverifikasi.
 ━━━━━━━━━━━━━━━━━━
 
 
-🤖 AI Assistant Anda sudah aktif.
+🚀 <b>Akses Premium Anda:</b>
+
+
+✅ AI Assistant Telegram
+
+✅ Analisa XAUUSD
+
+✅ Smart Money Concept
+
+✅ Market Intelligence Update
+
+
+━━━━━━━━━━━━━━━━━━
 
 
 Klik tombol di bawah untuk mulai
-menggunakan layanan premium.
+menggunakan AI Assistant.
 
 
-Terima kasih telah menjadi bagian
-dari <b>XAU AI Assistant</b>.
+Selamat trading bersama
+<b>XAU AI Assistant</b> 🤖
 
 
-""",
+"""
+
+
+
+
+
+    await bot.send_message(
+
+        chat_id=user_id,
+
+        text=member_text,
 
         reply_markup=button,
 
@@ -808,10 +1003,29 @@ dari <b>XAU AI Assistant</b>.
 
 
 
+
+
     await callback.message.answer(
 
-        "✅ Member berhasil diaktifkan."
+        """
 
+✅ <b>MEMBER BERHASIL DIAKTIFKAN</b>
+
+
+Data membership telah tersimpan
+dan user sudah menerima akses.
+
+
+""",
+
+        parse_mode="HTML"
+
+    )
+
+
+
+    await callback.answer(
+        "Member aktif"
     )
 
 
@@ -820,8 +1034,10 @@ dari <b>XAU AI Assistant</b>.
 
 
 
+
+
 # ==========================
-# REJECT
+# REJECT MEMBER
 # ==========================
 
 
@@ -830,8 +1046,16 @@ dari <b>XAU AI Assistant</b>.
 )
 
 async def reject(
-    callback:CallbackQuery
+    callback: CallbackQuery
 ):
+
+
+    # hapus tombol admin
+
+    await callback.message.edit_reply_markup(
+        reply_markup=None
+    )
+
 
 
     user_id = int(
@@ -839,30 +1063,78 @@ async def reject(
     )
 
 
+
+
+
+    reject_text = """
+
+❌ <b>PEMBAYARAN BELUM DIVERIFIKASI</b>
+
+
+<blockquote>
+"Terjadi kendala saat melakukan
+pengecekan pembayaran Anda."
+</blockquote>
+
+
+━━━━━━━━━━━━━━━━━━
+
+
+Mohon:
+
+
+📌 Periksa kembali bukti pembayaran
+
+📌 Pastikan nominal sesuai
+
+📌 Hubungi Admin untuk bantuan
+
+
+Admin siap membantu proses
+aktivasi Anda.
+
+
+"""
+
+
+
     await bot.send_message(
 
-        user_id,
+        chat_id=user_id,
 
-"""
+        text=reject_text,
 
-<b>❌ PEMBAYARAN BELUM DAPAT
-DIVERIFIKASI</b>
-
-
-Mohon maaf, pembayaran Anda
-belum dapat kami verifikasi.
-
-
-Silakan hubungi Admin untuk
-informasi lebih lanjut.
-
-
-"""
+        parse_mode="HTML"
 
     )
 
 
-    await callback.answer()
+
+
+    await callback.message.answer(
+
+        """
+
+❌ <b>PAYMENT DITOLAK</b>
+
+
+User telah menerima notifikasi
+bahwa pembayaran belum dapat
+diverifikasi.
+
+
+""",
+
+        parse_mode="HTML"
+
+    )
+
+
+
+    await callback.answer(
+        "Payment rejected"
+    )
+
 
 
 
@@ -870,15 +1142,17 @@ informasi lebih lanjut.
 
 
 # ==========================
-# RUN
+# RUN BOT
 # ==========================
 
 
 async def main():
 
+
     print(
-        "XAU Welcome Bot Running..."
+        "🤖 XAU AI Assistant Bot Running..."
     )
+
 
 
     await dp.start_polling(
@@ -887,6 +1161,9 @@ async def main():
 
 
 
-if __name__=="__main__":
+
+
+if __name__ == "__main__":
+
 
     asyncio.run(main())
