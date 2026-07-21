@@ -1,6 +1,30 @@
-import requests
+import gspread
+from google.oauth2.service_account import Credentials
 
-from config import APPSCRIPT_URL
+
+SPREADSHEET_ID = "1J3_Go0MdiNaDxVl6EuA00hJMsamB35Gjq0eHEg96ZMw"
+SHEET_NAME = "Members"
+
+
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
+
+# koneksi Google Sheet
+creds = Credentials.from_service_account_file(
+    "service_account.json",
+    scopes=SCOPES
+)
+
+client = gspread.authorize(creds)
+
+sheet = client.open_by_key(
+    SPREADSHEET_ID
+).worksheet(
+    SHEET_NAME
+)
 
 
 
@@ -12,35 +36,43 @@ def save_member(data):
         print(data)
 
 
-        response = requests.post(
+        sheet.append_row([
 
-            APPSCRIPT_URL,
+            data.get("telegram_id", ""),
 
-            json=data,
+            data.get("username", ""),
 
-            timeout=15
+            data.get("nama", ""),
 
-        )
+            data.get("paket", ""),
+
+            data.get("harga", ""),
+
+            data.get("register", ""),
+
+            data.get("expired", ""),
+
+            data.get("status", "")
+
+        ])
 
 
         print("STATUS:")
-        print(response.status_code)
+        print("SUCCESS")
 
 
-        print("RESPON APPS SCRIPT:")
-        print(response.text)
+        print("RESPON GOOGLE SHEET:")
+        print("Member berhasil disimpan")
 
 
-
-        return response.text
-
+        return True
 
 
     except Exception as e:
 
         print(
-            "Apps Script Error:",
+            "Google Sheet Error:",
             e
         )
 
-        return None
+        return False
