@@ -12,8 +12,4 @@ PAYMENT_GROUP_ID = -1003934607716
 SIGNAL_BOT = "https://t.me/@AIGOLDASSISTANT_BOT"
 
 
-# Apps Script Web App URL
 
-APPSCRIPT_URL = (
-    "https://script.google.com/macros/s/AKfycbw0hrMOu1uE3zr6hFFvIzTealG3TWSWBu_TOecXUYbxdLQaLXi-Dy3zNNSBNdfQ_fY/exec"
-)
