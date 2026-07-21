@@ -88,45 +88,48 @@ async def start(message: Message):
 Halo <b>{message.from_user.first_name}</b> 👋
 
 
-Di atas adalah contoh tampilan
-AI Assistant yang akan Anda dapatkan.
+Selamat datang di XAU AI Assistant.
 
 
-AI Assistant akan membantu Anda mendapatkan
-informasi dan analisa XAUUSD langsung
-melalui Telegram pribadi Anda.
+Gambar di atas adalah contoh tampilan
+AI Assistant pribadi yang akan Anda dapatkan
+setelah membership berhasil diaktifkan.
 
 
 ━━━━━━━━━━━━━━
 
 
-<b>Yang Anda dapatkan:</b>
+<b>Apa yang Anda dapatkan?</b>
 
 
-📈 Analisa XAUUSD
+📈 Analisa XAUUSD Premium
 
 🧠 Smart Money Concept Analysis
 
-📰 Update Market & News
+📰 Update Market & News Berdampak Tinggi
 
-⚡ Informasi Trading Terbaru
+⚡ Informasi Pergerakan Gold Terbaru
 
-🤖 AI Assistant Pribadi
+🤖 AI Assistant pribadi melalui Telegram
 
 
 ━━━━━━━━━━━━━━
 
 
-Tidak perlu mencari signal di grup.
-
-Tidak perlu membaca chat yang menumpuk.
+Berbeda dengan grup signal biasa,
 
 
-Semua informasi akan dikirim langsung
+Anda tidak perlu mencari pesan,
+membaca chat yang menumpuk,
+atau melewatkan informasi penting.
+
+
+Semua update akan dikirim langsung
 melalui AI Assistant pribadi Anda.
 
 
-Klik tombol di bawah untuk mengaktifkan.
+Klik tombol di bawah untuk mengaktifkan
+akses XAU AI Assistant.
 
 
 """
@@ -227,36 +230,41 @@ async def choose_package(
 
 """
 
-💎 <b>PILIH MEMBERSHIP</b>
+💎 <b>PILIH MEMBERSHIP XAU AI ASSISTANT</b>
 
 
-Pilih durasi akses
-XAU AI Assistant Anda.
+Dapatkan akses AI Assistant sesuai
+dengan durasi yang Anda inginkan.
 
 
 ━━━━━━━━━━━━━━
 
 
-🥇 1 Bulan
+🥇 <b>1 Bulan</b>
+
 Rp250.000
 
 
-🥈 6 Bulan
+🥈 <b>6 Bulan</b>
+
 Rp500.000
 
 
-🥉 12 Bulan
+🥉 <b>12 Bulan</b>
+
 Rp850.000
 
 
-👑 Permanent
+👑 <b>Permanent</b>
+
 Rp1.500.000
 
 
 ━━━━━━━━━━━━━━
 
 
-Silakan pilih paket.
+Silakan pilih paket untuk melanjutkan
+proses aktivasi.
 
 
 """,
@@ -266,7 +274,6 @@ reply_markup=keyboard,
 parse_mode="HTML"
 
 )
-
 
     await callback.answer()
 
@@ -303,39 +310,16 @@ callback: CallbackQuery
     data = PACKAGE_MAP[package_key]
 
 
-
-    keyboard = InlineKeyboardMarkup(
-
-        inline_keyboard=[
-
-            [
-
-            InlineKeyboardButton(
-
-                text="📸 UPLOAD BUKTI PEMBAYARAN",
-
-                callback_data="upload"
-
-            )
-
-            ]
-
-        ]
-
-    )
-
-
-
     await callback.message.answer_photo(
 
-        photo=FSInputFile(
-            "assets/qris.jpg"
-        ),
+    photo=FSInputFile(
+        "assets/qris.jpg"
+    ),
 
 
-        caption=f"""
+    caption=f"""
 
-💳 <b>AKTIVASI MEMBERSHIP</b>
+💳 <b>AKTIVASI XAU AI ASSISTANT</b>
 
 
 Paket:
@@ -343,7 +327,7 @@ Paket:
 <b>{data['label']}</b>
 
 
-Biaya:
+Biaya Membership:
 
 <b>Rp {data['price']:,}</b>
 
@@ -355,24 +339,26 @@ Silakan lakukan pembayaran
 melalui QRIS di atas.
 
 
-Setelah pembayaran selesai,
-upload bukti pembayaran Anda.
+Setelah pembayaran berhasil,
+
+
+📸 Kirim screenshot atau foto
+bukti pembayaran ke chat ini.
 
 
 Admin akan melakukan verifikasi
 dan mengaktifkan AI Assistant Anda.
 
 
-""",
+Terima kasih telah bergabung
+bersama XAU AI Assistant.
 
-reply_markup=keyboard,
+
+""",
 
 parse_mode="HTML"
 
 )
-
-
-    await callback.answer()
 
 
 
