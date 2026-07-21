@@ -24,7 +24,7 @@ from config import (
 
 from packages import PACKAGE_MAP
 
-from apps_script import save_member
+from spreadsheet import save_member
 
 
 
