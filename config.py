@@ -9,7 +9,7 @@ PAYMENT_GROUP_ID = -1003934607716
 
 # Link Bot Signal
 
-SIGNAL_BOT = "https://t.me/AIGOLDASSISTANT_BOT"
+SIGNAL_BOT = "https://t.me/AIGOLDASSIST_BOT?start"
 
 
 
