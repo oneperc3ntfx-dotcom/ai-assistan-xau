@@ -15,5 +15,5 @@ SIGNAL_BOT = "https://t.me/@AIGOLDASSISTANT_BOT"
 # Apps Script Web App URL
 
 APPSCRIPT_URL = (
-    "https://script.google.com/macros/s/AKfycbxbXFSIzF80mPXGy8JQ0hkRZyMEPKL0R99z2Kr_qIsWuDGDSDyIq96fwM6RxfeJOeuf/exec"
+    "https://script.google.com/macros/s/AKfycbw3HJ3E7lP321i-c8_WqHQepQLzMuEG8pWBWGLjVAQPZxQdL2tY_eypupMaotPHYUyB/exec"
 )
