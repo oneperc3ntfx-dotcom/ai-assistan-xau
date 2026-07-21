@@ -82,54 +82,65 @@ async def start(message: Message):
 
     text = f"""
 
-🤖 <b>XAU AI Assistant</b>
+<b>🤖 XAU AI ASSISTANT PREMIUM</b>
 
 
 Halo <b>{message.from_user.first_name}</b> 👋
 
 
-Selamat datang di XAU AI Assistant.
+Selamat datang di layanan
+<b>XAU AI Assistant Premium</b>.
 
 
-Gambar di atas adalah contoh tampilan
-AI Assistant pribadi yang akan Anda dapatkan
-setelah membership berhasil diaktifkan.
+━━━━━━━━━━━━━━━━━━
 
 
-━━━━━━━━━━━━━━
+<b>🚀 Apa yang Anda dapatkan?</b>
 
 
-<b>Apa yang Anda dapatkan?</b>
+📈 <b>Analisa XAUUSD Premium</b>
+
+🧠 <b>Smart Money Concept Analysis</b>
+
+📰 <b>Market News Berdampak Tinggi</b>
+
+⚡ <b>Update Pergerakan Gold Terbaru</b>
+
+🤖 <b>AI Assistant Pribadi Telegram</b>
 
 
-📈 Analisa XAUUSD Premium
-
-🧠 Smart Money Concept Analysis
-
-📰 Update Market & News Berdampak Tinggi
-
-⚡ Informasi Pergerakan Gold Terbaru
-
-🤖 AI Assistant pribadi melalui Telegram
+━━━━━━━━━━━━━━━━━━
 
 
-━━━━━━━━━━━━━━
+<b>Kenapa berbeda dari grup signal biasa?</b>
 
 
-Berbeda dengan grup signal biasa,
+Anda tidak perlu lagi:
+
+❌ Membaca chat yang menumpuk
+
+❌ Mencari pesan penting
+
+❌ Takut melewatkan momentum market
 
 
-Anda tidak perlu mencari pesan,
-membaca chat yang menumpuk,
-atau melewatkan informasi penting.
+Semua informasi penting akan dikirim
+langsung melalui <b>AI Assistant pribadi Anda</b>.
 
 
-Semua update akan dikirim langsung
-melalui AI Assistant pribadi Anda.
+━━━━━━━━━━━━━━━━━━
 
 
-Klik tombol di bawah untuk mengaktifkan
-akses XAU AI Assistant.
+<b>Aktifkan akses Anda sekarang</b>
+
+
+Dapatkan bantuan AI untuk membantu
+menganalisa market Gold secara lebih cepat
+dan terstruktur.
+
+
+Klik tombol di bawah untuk memulai
+proses aktivasi membership.
 
 
 """
@@ -146,9 +157,6 @@ akses XAU AI Assistant.
         parse_mode="HTML"
 
     )
-
-
-
 
 
 # ==========================
@@ -230,37 +238,43 @@ async def choose_package(
 
 """
 
-💎 <b>PILIH MEMBERSHIP XAU AI ASSISTANT</b>
+<b>💎 PILIH MEMBERSHIP
+XAU AI ASSISTANT</b>
 
 
-Dapatkan akses AI Assistant sesuai
-dengan durasi yang Anda inginkan.
+Pilih paket akses sesuai kebutuhan
+Anda untuk mendapatkan layanan
+AI Assistant Premium.
 
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
 
 
 🥇 <b>1 Bulan</b>
 
-Rp250.000
+💰 Rp250.000
 
 
 🥈 <b>6 Bulan</b>
 
-Rp500.000
+💰 Rp500.000
 
 
 🥉 <b>12 Bulan</b>
 
-Rp850.000
+💰 Rp850.000
 
 
-👑 <b>Permanent</b>
+👑 <b>Permanent Access</b>
 
-Rp1.500.000
+💰 Rp1.500.000
 
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
+
+
+✨ Semua paket mendapatkan akses
+AI Assistant Telegram pribadi.
 
 
 Silakan pilih paket untuk melanjutkan
@@ -269,13 +283,15 @@ proses aktivasi.
 
 """,
 
-reply_markup=keyboard,
+        reply_markup=keyboard,
 
-parse_mode="HTML"
+        parse_mode="HTML"
 
-)
+    )
+
 
     await callback.answer()
+
 
 
 
@@ -287,11 +303,11 @@ parse_mode="HTML"
 
 
 @dp.callback_query(
-F.data.startswith("pkg_")
+    F.data.startswith("pkg_")
 )
 
 async def show_payment(
-callback: CallbackQuery
+    callback: CallbackQuery
 ):
 
 
@@ -310,55 +326,63 @@ callback: CallbackQuery
     data = PACKAGE_MAP[package_key]
 
 
+
     await callback.message.answer_photo(
 
-    photo=FSInputFile(
-        "assets/qris.jpg"
-    ),
+        photo=FSInputFile(
+            "assets/qris.jpg"
+        ),
 
 
-    caption=f"""
+        caption=f"""
 
-💳 <b>AKTIVASI XAU AI ASSISTANT</b>
-
-
-Paket:
-
-<b>{data['label']}</b>
+<b>💳 AKTIVASI MEMBERSHIP
+XAU AI ASSISTANT</b>
 
 
-Biaya Membership:
+📦 <b>Paket Dipilih:</b>
 
-<b>Rp {data['price']:,}</b>
+{data['label']}
 
 
-━━━━━━━━━━━━━━
+💰 <b>Total Pembayaran:</b>
+
+Rp {data['price']:,}
+
+
+━━━━━━━━━━━━━━━━━━
 
 
 Silakan lakukan pembayaran
 melalui QRIS di atas.
 
 
-Setelah pembayaran berhasil,
+Setelah pembayaran selesai:
 
 
 📸 Kirim screenshot atau foto
-bukti pembayaran ke chat ini.
+<b>bukti pembayaran</b> ke chat ini.
 
 
-Admin akan melakukan verifikasi
-dan mengaktifkan AI Assistant Anda.
+Admin akan melakukan pengecekan
+dan mengaktifkan akses Anda.
 
 
-Terima kasih telah bergabung
-bersama XAU AI Assistant.
+━━━━━━━━━━━━━━━━━━
+
+
+Terima kasih telah mempercayakan
+akses market intelligence Anda
+bersama <b>XAU AI Assistant</b>.
 
 
 """,
 
-parse_mode="HTML"
+        parse_mode="HTML"
 
-)
+    )
+
+
 
 
 
@@ -370,11 +394,11 @@ parse_mode="HTML"
 
 
 @dp.callback_query(
-F.data=="upload"
+    F.data=="upload"
 )
 
 async def upload_request(
-callback:CallbackQuery
+    callback:CallbackQuery
 ):
 
 
@@ -382,16 +406,25 @@ callback:CallbackQuery
 
 """
 
-Silakan kirim screenshot
-atau foto bukti pembayaran.
+<b>📸 UPLOAD BUKTI PEMBAYARAN</b>
+
+
+Silakan kirim screenshot atau foto
+bukti pembayaran QRIS Anda.
+
+
+Pastikan gambar terlihat jelas agar
+proses verifikasi dapat dilakukan
+dengan cepat.
 
 
 """
 
-)
+    )
 
 
     await callback.answer()
+
 
 
 
@@ -403,11 +436,11 @@ atau foto bukti pembayaran.
 
 
 @dp.message(
-F.photo
+    F.photo
 )
 
 async def receive_payment(
-message: Message
+    message: Message
 ):
 
 
@@ -443,24 +476,28 @@ message: Message
 
 """
 
-✅ Bukti pembayaran diterima.
+<b>✅ BUKTI PEMBAYARAN DITERIMA</b>
 
 
-Klik tombol di bawah untuk
-mengirim permintaan verifikasi Admin.
+Bukti pembayaran berhasil diterima.
+
+
+Silakan klik tombol di bawah untuk
+mengirim permintaan verifikasi
+kepada Admin.
+
+
+⏳ Proses pengecekan dilakukan
+setelah Admin menerima laporan.
 
 
 """,
 
-reply_markup=keyboard,
+        reply_markup=keyboard,
 
-parse_mode="HTML"
+        parse_mode="HTML"
 
-)
-
-
-
-
+    )
 
 
 # ==========================
@@ -469,11 +506,11 @@ parse_mode="HTML"
 
 
 @dp.callback_query(
-F.data=="verify"
+    F.data=="verify"
 )
 
 async def verify(
-callback:CallbackQuery
+    callback:CallbackQuery
 ):
 
 
@@ -544,49 +581,78 @@ callback:CallbackQuery
 
         caption=f"""
 
-📥 <b>PAYMENT VERIFICATION</b>
+<b>📥 PAYMENT VERIFICATION</b>
 
 
-Nama:
+━━━━━━━━━━━━━━━━━━
+
+
+👤 <b>Nama:</b>
+
 {callback.from_user.full_name}
 
 
-Username:
+🔹 <b>Username:</b>
+
 @{callback.from_user.username}
 
 
-Telegram ID:
+🆔 <b>Telegram ID:</b>
+
 <code>{user_id}</code>
 
 
-Paket:
+📦 <b>Paket:</b>
 
 {data['label']}
 
 
-Harga:
+💰 <b>Total:</b>
 
 Rp {data['price']:,}
 
 
+━━━━━━━━━━━━━━━━━━
+
+
+Silakan lakukan pengecekan
+dan pilih tindakan.
+
+
 """,
 
-reply_markup=keyboard,
+        reply_markup=keyboard,
 
-parse_mode="HTML"
+        parse_mode="HTML"
 
-)
+    )
 
 
 
     await callback.message.answer(
 
-        "⏳ Pembayaran sedang diverifikasi Admin."
+        """
+
+<b>⏳ PEMBAYARAN DALAM PROSES VERIFIKASI</b>
+
+
+Bukti pembayaran telah dikirim
+kepada Admin.
+
+
+Mohon tunggu proses pengecekan.
+
+
+Terima kasih atas kesabaran Anda.
+
+
+"""
 
     )
 
 
     await callback.answer()
+
 
 
 
@@ -598,11 +664,11 @@ parse_mode="HTML"
 
 
 @dp.callback_query(
-F.data.startswith("approve_")
+    F.data.startswith("approve_")
 )
 
 async def approve(
-callback:CallbackQuery
+    callback:CallbackQuery
 ):
 
 
@@ -698,47 +764,59 @@ callback:CallbackQuery
 
 f"""
 
-🎉 <b>MEMBERSHIP BERHASIL DIAKTIFKAN</b>
+<b>🎉 MEMBERSHIP AKTIF</b>
 
 
-Terima kasih telah bergabung.
+Selamat! Pembayaran Anda telah
+berhasil diverifikasi.
 
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
 
 
-📦 Paket:
+📦 <b>Paket:</b>
 
-<b>{data['label']}</b>
-
-
-⏳ Berlaku sampai:
-
-<b>{expired}</b>
+{data['label']}
 
 
-━━━━━━━━━━━━━━
+⏳ <b>Masa Aktif:</b>
+
+{expired}
 
 
-AI Assistant Anda sudah aktif.
+━━━━━━━━━━━━━━━━━━
 
 
-Klik tombol di bawah untuk mulai menggunakan.
+🤖 AI Assistant Anda sudah aktif.
+
+
+Klik tombol di bawah untuk mulai
+menggunakan layanan premium.
+
+
+Terima kasih telah menjadi bagian
+dari <b>XAU AI Assistant</b>.
 
 
 """,
 
-reply_markup=button,
+        reply_markup=button,
 
-parse_mode="HTML"
+        parse_mode="HTML"
 
-)
+    )
 
 
 
     await callback.message.answer(
+
         "✅ Member berhasil diaktifkan."
+
     )
+
+
+
+
 
 
 
@@ -748,11 +826,11 @@ parse_mode="HTML"
 
 
 @dp.callback_query(
-F.data.startswith("reject_")
+    F.data.startswith("reject_")
 )
 
 async def reject(
-callback:CallbackQuery
+    callback:CallbackQuery
 ):
 
 
@@ -767,10 +845,17 @@ callback:CallbackQuery
 
 """
 
-❌ Pembayaran belum dapat diverifikasi.
+<b>❌ PEMBAYARAN BELUM DAPAT
+DIVERIFIKASI</b>
 
 
-Silakan hubungi Admin.
+Mohon maaf, pembayaran Anda
+belum dapat kami verifikasi.
+
+
+Silakan hubungi Admin untuk
+informasi lebih lanjut.
+
 
 """
 
@@ -778,6 +863,7 @@ Silakan hubungi Admin.
 
 
     await callback.answer()
+
 
 
 
