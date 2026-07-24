@@ -18,7 +18,8 @@ from aiogram.types import (
 from config import (
     BOT_TOKEN,
     PAYMENT_GROUP_ID,
-    SIGNAL_BOT
+    SIGNAL_BOT,
+    ADMIN_IDS
 )
 
 
@@ -1137,7 +1138,106 @@ diverifikasi.
 
 
 
+# ==========================
+# ADMIN: KIRIM PESAN KE USER
+# ==========================
 
+
+@dp.message(
+    F.text.startswith("/sent")
+)
+
+async def sent_to_user(
+    message: Message
+):
+
+    # hanya admin yang boleh pakai command ini
+
+    if message.from_user.id not in ADMIN_IDS:
+
+        return
+
+
+
+    # format: /sent <telegram_id> <pesan>
+
+    parts = message.text.split(
+        maxsplit=2
+    )
+
+
+    if len(parts) < 3:
+
+        await message.answer(
+
+            "⚠️ Format salah.\n\n"
+
+            "Gunakan:\n"
+
+            "<code>/sent [telegram_id] [pesan]</code>",
+
+            parse_mode="HTML"
+
+        )
+
+        return
+
+
+
+    target_id_str = parts[1]
+
+    text_to_send = parts[2]
+
+
+    if not target_id_str.isdigit():
+
+        await message.answer(
+            "⚠️ Telegram ID harus berupa angka."
+        )
+
+        return
+
+
+    target_id = int(target_id_str)
+
+
+    try:
+
+        await bot.send_message(
+
+            chat_id=target_id,
+
+            text=text_to_send
+
+        )
+
+
+        await message.answer(
+
+            f"✅ <b>Pesan berhasil dikirim</b>\n\n"
+
+            f"🆔 Target: <code>{target_id}</code>\n"
+
+            f"💬 Isi: {text_to_send}",
+
+            parse_mode="HTML"
+
+        )
+
+
+    except Exception as e:
+
+        await message.answer(
+
+            f"❌ <b>Pesan gagal dikirim</b>\n\n"
+
+            f"🆔 Target: <code>{target_id}</code>\n"
+
+            f"⚠️ Error: <code>{e}</code>",
+
+            parse_mode="HTML"
+
+        )
 
 
 
