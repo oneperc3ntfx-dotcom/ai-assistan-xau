@@ -2,6 +2,7 @@ BOT_TOKEN = "8280168009:AAGY8UacyFSOU1tgA2mkoqFCZZm91-dJCV0"
 
 ADMIN_ID = 1305881282
 
+ADMIN_IDS = [1305881282]  # ganti dengan Telegram ID kamu
 
 # Grup tempat admin verifikasi pembayaran
 
